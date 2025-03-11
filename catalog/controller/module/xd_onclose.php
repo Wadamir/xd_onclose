@@ -110,6 +110,7 @@ class ControllerModuleXDOnclose extends Controller
     {
         if ($this->request->server['REQUEST_METHOD'] == 'POST' && $this->validate()) {
 
+            $xd_onclose_setting = $this->config->get('xd_onclose');
             $this->load->language('module/xd_onclose');
             $json = array();
             $mail_text = '';
@@ -153,6 +154,8 @@ class ControllerModuleXDOnclose extends Controller
                 $mail_text .= $this->language->get('text_user_agent') . $user_agent . " \r\n";
             }
 
+            $data['exan_status'] = (isset($xd_onclose_setting['exan_status'])) ? boolval($xd_onclose_setting['exan_status']) : false;
+            $this->exan_status = $data['exan_status'];
             if ($this->exan_status) {
                 if (isset($this->request->post['xd_onclose_sb_udata_vst']) && $this->request->post['xd_onclose_sb_udata_vst'] != '') {
                     $xd_onclose_sb_udata_vst = $this->request->post['xd_onclose_sb_udata_vst'];
