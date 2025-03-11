@@ -34,16 +34,115 @@
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-lg-6 col-xs-12">
-                                    <label class="control-label mb-10"><?php echo $entry_modal_header; ?></label>
+                                    <fieldset id="cookie_days_fieldset" class="number-type number-type-plus-minus">
+                                        <label for="cookie_days"><?php echo $cookie_days; ?></label>
+                                        <div class="count-item__wrapper">
+                                            <a href="#" class="count-item__btn minus">
+                                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <g clip-path="url(#clip0_1685_8985)">
+                                                        <path d="M19 13H5V11H19V13Z"></path>
+                                                    </g>
+                                                    <defs>
+                                                        <clipPath id="clip0_1685_8985">
+                                                            <rect width="24" height="24"></rect>
+                                                        </clipPath>
+                                                    </defs>
+                                                </svg>
+                                            </a>
+                                            <input type="number" name="xd_onclose[cookie_days]" class="form-control count-item__input" value="<?php echo isset($xd_onclose['cookie_days']) ? $xd_onclose['cookie_days'] : '0'; ?>" data-step="1" data-min-count="0" data-max-count="365" placeholder="">
+                                            <a href="#" class="count-item__btn plus">
+                                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <g clip-path="url(#clip0_1685_8988)">
+                                                        <path d="M19 13H13V19H11V13H5V11H11V5H13V11H19V13Z"></path>
+                                                    </g>
+                                                    <defs>
+                                                        <clipPath id="clip0_1685_8988">
+                                                            <rect width="24" height="24"></rect>
+                                                        </clipPath>
+                                                    </defs>
+                                                </svg>
+                                            </a>
+                                        </div>
+                                    </fieldset>
+                                    <p class="field-tooltip"><?php echo $cookie_days_tooltip ?></p>
+                                </div>
+                                <div class="col-lg-6 col-xs-12">
+                                    <fieldset id="mobile_seconds_fieldset" class="number-type number-type-plus-minus">
+                                        <label for="mobile_seconds"><?php echo $mobile_seconds; ?></label>
+                                        <div class="count-item__wrapper">
+                                            <a href="#" class="count-item__btn minus">
+                                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <g clip-path="url(#clip0_1685_8985)">
+                                                        <path d="M19 13H5V11H19V13Z"></path>
+                                                    </g>
+                                                    <defs>
+                                                        <clipPath id="clip0_1685_8985">
+                                                            <rect width="24" height="24"></rect>
+                                                        </clipPath>
+                                                    </defs>
+                                                </svg>
+                                            </a>
+                                            <input type="number" name="xd_onclose[mobile_seconds]" class="form-control count-item__input" value="<?php echo isset($xd_onclose['mobile_seconds']) ? $xd_onclose['mobile_seconds'] : '0'; ?>" data-step="1" data-min-count="0" data-max-count="365" placeholder="">
+                                            <a href="#" class="count-item__btn plus">
+                                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <g clip-path="url(#clip0_1685_8988)">
+                                                        <path d="M19 13H13V19H11V13H5V11H11V5H13V11H19V13Z"></path>
+                                                    </g>
+                                                    <defs>
+                                                        <clipPath id="clip0_1685_8988">
+                                                            <rect width="24" height="24"></rect>
+                                                        </clipPath>
+                                                    </defs>
+                                                </svg>
+                                            </a>
+                                        </div>
+                                    </fieldset>
+                                    <p class="field-tooltip"><?php echo $mobile_seconds_tooltip ?></p>
+                                </div>
+                            </div>
+                            <div class="row pt-15" style="border-top: 1px solid #e8e8e8;">
+                                <div class="col-lg-6 col-xs-12">
+                                    <label class="control-label mb-10"><?php echo $entry_desktop_header; ?></label>
                                     <?php foreach ($languages as $language) { ?>
                                         <?php $language_id = $language['language_id']; ?>
                                         <div class="input-group mb-15">
                                             <span class="input-group-addon"><img src="view/image/flags/<?php echo $language['image']; ?>" title="<?php echo $language['name']; ?>" /></span>
-                                            <input type="text" name="xd_onclose[modal_header][<?php echo $language_id; ?>]" placeholder="<?php echo $entry_modal_header; ?>" value="<?php echo isset($xd_onclose['modal_header'][$language_id]) ? $xd_onclose['modal_header'][$language_id] : ''; ?>" class="form-control" />
+                                            <input type="text" name="xd_onclose[desktop_header][<?php echo $language_id; ?>]" placeholder="<?php echo $entry_desktop_header; ?>" value="<?php echo isset($xd_onclose['desktop_header'][$language_id]) ? $xd_onclose['desktop_header'][$language_id] : ''; ?>" class="form-control" />
                                         </div>
                                     <?php } ?>
                                 </div>
-                                <div class="col-lg-6 col-xs-12"></div>
+                                <div class="col-lg-6 col-xs-12">
+                                    <label class="control-label mb-10"><?php echo $entry_mobile_header; ?></label>
+                                    <?php foreach ($languages as $language) { ?>
+                                        <?php $language_id = $language['language_id']; ?>
+                                        <div class="input-group mb-15">
+                                            <span class="input-group-addon"><img src="view/image/flags/<?php echo $language['image']; ?>" title="<?php echo $language['name']; ?>" /></span>
+                                            <input type="text" name="xd_onclose[mobile_header][<?php echo $language_id; ?>]" placeholder="<?php echo $entry_mobile_header; ?>" value="<?php echo isset($xd_onclose['mobile_header'][$language_id]) ? $xd_onclose['mobile_header'][$language_id] : ''; ?>" class="form-control" />
+                                        </div>
+                                    <?php } ?>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6 col-xs-12">
+                                    <label class="control-label"><?php echo $entry_desktop_text; ?></label>
+                                    <?php foreach ($languages as $language) { ?>
+                                        <?php $language_id = $language['language_id']; ?>
+                                        <div class="input-group mb-15">
+                                            <span class="input-group-addon"><img src="view/image/flags/<?php echo $language['image']; ?>" title="<?php echo $language['name']; ?>" /></span>
+                                            <input type="text" name="xd_onclose[desktop_text][<?php echo $language_id; ?>]" placeholder="<?php echo $entry_desktop_text; ?>" value="<?php echo isset($xd_onclose['desktop_text'][$language_id]) ? $xd_onclose['desktop_text'][$language_id] : ''; ?>" class="form-control" />
+                                        </div>
+                                    <?php } ?>
+                                </div>
+                                <div class="col-lg-6 col-xs-12">
+                                    <label class="control-label"><?php echo $entry_mobile_text; ?></label>
+                                    <?php foreach ($languages as $language) { ?>
+                                        <?php $language_id = $language['language_id']; ?>
+                                        <div class="input-group mb-15">
+                                            <span class="input-group-addon"><img src="view/image/flags/<?php echo $language['image']; ?>" title="<?php echo $language['name']; ?>" /></span>
+                                            <input type="text" name="xd_onclose[mobile_text][<?php echo $language_id; ?>]" placeholder="<?php echo $entry_mobile_text; ?>" value="<?php echo isset($xd_onclose['mobile_text'][$language_id]) ? $xd_onclose['mobile_text'][$language_id] : ''; ?>" class="form-control" />
+                                        </div>
+                                    <?php } ?>
+                                </div>
                             </div>
                             <div class="row pt-15" style="border-top: 1px solid #e8e8e8;">
                                 <div class="col-lg-6 col-xs-12">
@@ -237,42 +336,7 @@
                             <h2><?php echo $tab_styles; ?></h2>
                         </div>
                         <div class="panel-body">
-                            <div class="row">
-                                <div class="col-lg-6 col-xs-12">
-                                    <label class="control-label mb-10"><?php echo $tab_styles_button_color; ?></label>
-                                    <div class="color_input">
-                                        <div class="input-group">
-                                            <span class="input-group-addon" style="border-bottom-right-radius:0; border-top-right-radius:0; padding: 4px 8px;"><i class="fa fa-circle fa-2x fa-fw" aria-hidden="true" style="color:<?php echo $xd_onclose['button_color']; ?>;"></i></span>
-                                            <input type="text" name="xd_onclose[button_color]" value="<?php echo isset($xd_onclose['button_color']) ? $xd_onclose['button_color'] : ''; ?>" class="form-control col-xs-8" />
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 col-xs-12 text-center">
-                                    <a href="#" id="xd_onclose_phone_button" class="btn btn-link">
-                                        <div class="circlephone circle_color" style="transform-origin: center;background-color:<?php echo isset($xd_onclose['button_color']) ? $xd_onclose['button_color'] : ''; ?>;border-color:<?php echo isset($xd_onclose['button_color']) ? $xd_onclose['button_color'] : ''; ?>"></div>
-                                        <div class="circle-fill circle_color" style="transform-origin: center;background-color:<?php echo isset($xd_onclose['button_color']) ? $xd_onclose['button_color'] : ''; ?>"></div>
-                                        <div class="img-circle circle_color" style="transform-origin: center;background-color:<?php echo isset($xd_onclose['button_color']) ? $xd_onclose['button_color'] : ''; ?>">
-                                            <div class="img-circleblock" style="transform-origin: center;">
-                                                <p style="margin:0;">Call me</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                            <hr class="main" />
                             <div class="row inline-input-group">
-                                <div class="col-lg-6 col-xs-12">
-                                    <label class="control-label" for="button_position"><?php echo $tab_styles_button_position; ?></label>
-                                    <div class="custom-select">
-                                        <select name="xd_onclose[button_position]" id="button_position" class="form-control">
-                                            <option value="hide" <?php echo (isset($xd_onclose['button_position']) && $xd_onclose['button_position'] === 'hide') ? ' selected' : '' ?>><?php echo $tab_styles_button_position_hide; ?></option>
-                                            <option value="top_left" <?php echo (isset($xd_onclose['button_position']) && $xd_onclose['button_position'] === 'top_left') ? ' selected' : '' ?>><?php echo $tab_styles_button_position_top_left; ?></option>
-                                            <option value="top_right" <?php echo (isset($xd_onclose['button_position']) && $xd_onclose['button_position'] === 'top_right') ? ' selected' : '' ?>><?php echo $tab_styles_button_position_top_right; ?></option>
-                                            <option value="bottom_left" <?php echo (isset($xd_onclose['button_position']) && $xd_onclose['button_position'] === 'bottom_left') ? ' selected' : '' ?>><?php echo $tab_styles_button_position_bottom_left; ?></option>
-                                            <option value="bottom_right" <?php echo (isset($xd_onclose['button_position']) && $xd_onclose['button_position'] === 'bottom_right') ? ' selected' : '' ?>><?php echo $tab_styles_button_position_bottom_right; ?></option>
-                                        </select>
-                                    </div>
-                                </div>
                                 <div class="col-lg-6 col-xs-12">
                                     <label class="control-label" for="modal_style"><?php echo $tab_styles_modal_style; ?></label>
                                     <div class="custom-select">
@@ -431,21 +495,30 @@
                 }
             });
         }
-        $('.color_input input').ColorPicker({
-            onChange: function(hsb, hex, rgb, el) {
-                $(el).val("#" + hex);
-                $(el).parent().find('.fa').css("color", "#" + hex);
-                $('.circle_color').css("background-color", "#" + hex);
-                $('.circle_color').css("border-color", "#" + hex);
-            },
-            onShow: function(colpkr) {
-                $(colpkr).show();
-                return false;
-            },
-            onHide: function(colpkr) {
-                $(colpkr).hide();
-                return false;
-            }
-        });
     });
+
+    document.querySelectorAll(".count-item__btn").forEach(button => {
+        button.addEventListener("click", countPlusMinus);
+    });
+
+    function countPlusMinus(event) {
+        event.preventDefault(); // Prevent default link behavior
+
+        console.log('countPlusMinus', event);
+
+        let btn = event.currentTarget; // Ensure we always get the button
+        let count_wrapper = btn.closest('.count-item__wrapper'); // More reliable than parentElement
+        let input = count_wrapper.querySelector('.count-item__input');
+
+        let step = parseInt(input.getAttribute('data-step')) || 1;
+        let min_count = parseInt(input.getAttribute('data-min-count')) || 0;
+        let max_count = parseInt(input.getAttribute('data-max-count')) || 1000;
+        let value = parseInt(input.value) || 0; // Prevent NaN issues
+
+        if (btn.classList.contains('minus')) {
+            input.value = Math.max(value - step, min_count); // Ensure it doesn't go below min
+        } else if (btn.classList.contains('plus')) {
+            input.value = Math.min(value + step, max_count); // Ensure it doesn't go above max
+        }
+    }
 </script>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<modification>
+	<code>XDOC200</code>
+    <name><![CDATA[<b>XD OnClose</b> for Opencart 2.x, 3.x]]></name>
+    <version>1.0</version>
+    <author>Domus159@gmail.com</author>
+    <link>https://xdomus.ru/opencart/obratnyj-zvonok-dlya-opencart-2-besplatno/</link>
+    <file path="catalog/controller/common/header.php">
+        <operation>
+            <search>
+				<![CDATA[
+					$data['scripts'] = $this->document->getScripts();
+				]]>
+			</search>
+            <add position="after">
+				<![CDATA[
+                    /* xd_onclose start */
+					$data['xd_onclose'] = $this->config->get('xd_onclose');
+                    $data['module_xd_onclose_status'] = 0;
+                    $data['xd_onclose_view'] = '';
+                    if ($data['xd_onclose']) {
+                        $data['module_xd_onclose_status'] = isset($data['xd_onclose']['module_xd_onclose_status']) ? intval($data['xd_onclose']['module_xd_onclose_status']) : 0;
+                        $data['xd_onclose_validation_type'] = isset($data['xd_onclose']['validation_type']) ? intval($data['xd_onclose']['validation_type']) : 0;
+                        $data['xd_onclose_exan_status'] = isset($data['xd_onclose']['exan_status']) ? intval($data['xd_onclose']['exan_status']) : 0;
+                        $data['xd_onclose_captcha'] = isset($data['xd_onclose']['captcha']) ? $data['xd_onclose']['captcha'] : '';
+
+                        // Add CSS & JS
+                        if ($data['module_xd_onclose_status'] === 1) {
+                            $data['scripts'][] = 'catalog/view/javascript/xd_onclose.js';
+                            if ($data['xd_onclose_validation_type'] > 0) {
+                                $data['scripts'][] = 'catalog/view/javascript/jquery.mask.min.js';
+                            }
+                            if ($data['xd_onclose_exan_status'] === 1) {
+                                $data['scripts'][] = 'catalog/view/javascript/sourcebuster.min.js';
+                            }
+                            if ($data['xd_onclose_captcha'] === 'google_captcha') {
+                                $data['scripts'][] = 'https://www.google.com/recaptcha/api.js';
+                            }
+
+                            $data['styles'][] = [
+                                'href'      => 'catalog/view/theme/default/stylesheet/xd_onclose.css',
+                                'rel'       => 'stylesheet',
+                                'media'     => 'screen'
+                            ];
+
+                            $data['xd_onclose_view'] = $this->load->controller('module/xd_onclose');
+                        }
+                    }
+                    /* xd_onclose end */
+				]]>
+			</add>
+        </operation>
+    </file>
+    <file path="catalog/view/theme/*/template/common/header.tpl">
+        <operation>
+            <search>
+				<![CDATA[
+					<body
+				]]>
+			</search>
+            <add position="after"><![CDATA[
+                <?php echo $xd_onclose_view; ?>
+            ]]></add>
+        </operation>
+    </file>
+</modification>

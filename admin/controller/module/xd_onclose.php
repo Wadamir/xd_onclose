@@ -29,6 +29,11 @@ class ControllerModuleXDOnclose extends Controller
         $data['settings_sms'] = $this->language->get('settings_sms');
         $data['settings_analytics'] = $this->language->get('settings_analytics');
         $data['text_tab_help'] = $this->language->get('text_tab_help');
+        // Cookie
+        $data['cookie_days'] = $this->language->get('cookie_days');
+        $data['cookie_days_tooltip'] = $this->language->get('cookie_days_tooltip');
+        $data['mobile_seconds'] = $this->language->get('mobile_seconds');
+        $data['mobile_seconds_tooltip'] = $this->language->get('mobile_seconds_tooltip');
         // Fields
         $data['field1_title'] = $this->language->get('field1_title');
         $data['field2_title'] = $this->language->get('field2_title');
@@ -46,7 +51,10 @@ class ControllerModuleXDOnclose extends Controller
         // Spam protection
         $data['entry_spam_protection'] = $this->language->get('entry_spam_protection');
         // Entry
-        $data['entry_modal_header'] = $this->language->get('entry_modal_header');
+        $data['entry_desktop_header'] = $this->language->get('entry_desktop_header');
+        $data['entry_desktop_text'] = $this->language->get('entry_desktop_text');
+        $data['entry_mobile_header'] = $this->language->get('entry_mobile_header');
+        $data['entry_mobile_text'] = $this->language->get('entry_mobile_text');
         $data['entry_status'] = $this->language->get('entry_status');
         $data['entry_redirect'] = $this->language->get('entry_redirect');
         $data['entry_success_field'] = $this->language->get('entry_success_field');
@@ -144,15 +152,42 @@ class ControllerModuleXDOnclose extends Controller
             $language_id = $language['language_id'];
             if (isset($this->request->post['xd_onclose'])) {
                 $post_data = $this->request->post['xd_onclose'];
-                $data['xd_onclose']['modal_header'][$language['language_id']] = $post_data['modal_header'][$language['language_id']];
-                $data['xd_onclose']['success_field'][$language['language_id']] = $post_data['success_field'][$language['language_id']];
+                $data['xd_onclose']['desktop_header'][$language['language_id']] = strip_tags($post_data['desktop_header'][$language['language_id']]);
+                $data['xd_onclose']['desktop_text'][$language['language_id']] = htmlspecialchars($post_data['desktop_text'][$language['language_id']]);
+                $data['xd_onclose']['mobile_header'][$language['language_id']] = strip_tags($post_data['mobile_header'][$language['language_id']]);
+                $data['xd_onclose']['mobile_text'][$language['language_id']] = htmlspecialchars($post_data['mobile_text'][$language['language_id']]);
+                $data['xd_onclose']['success_field'][$language['language_id']] = htmlspecialchars($post_data['success_field'][$language['language_id']]);
             } else {
-                if (isset($this->config->get('xd_onclose')['modal_header'][$language['language_id']]) && $this->config->get('xd_onclose')['modal_header'][$language['language_id']] != '') {
-                    $data['xd_onclose']['modal_header'][$language['language_id']] = $this->config->get('xd_onclose')['modal_header'][$language['language_id']];
+                if (isset($this->config->get('xd_onclose')['desktop_header'][$language['language_id']]) && $this->config->get('xd_onclose')['desktop_header'][$language['language_id']] != '') {
+                    $data['xd_onclose']['desktop_header'][$language['language_id']] = $this->config->get('xd_onclose')['desktop_header'][$language['language_id']];
                 } else {
                     // Set default values
                     if ($language_id == $this->config->get('config_language_id')) {
-                        $data['xd_onclose']['modal_header'][$language['language_id']] = $this->language->get('default_modal_header');
+                        $data['xd_onclose']['desktop_header'][$language['language_id']] = $this->language->get('default_desktop_header');
+                    }
+                }
+                if (isset($this->config->get('xd_onclose')['desktop_text'][$language['language_id']]) && $this->config->get('xd_onclose')['desktop_text'][$language['language_id']] != '') {
+                    $data['xd_onclose']['desktop_text'][$language['language_id']] = $this->config->get('xd_onclose')['desktop_text'][$language['language_id']];
+                } else {
+                    // Set default values
+                    if ($language_id == $this->config->get('config_language_id')) {
+                        $data['xd_onclose']['desktop_text'][$language['language_id']] = $this->language->get('default_desktop_text');
+                    }
+                }
+                if (isset($this->config->get('xd_onclose')['mobile_header'][$language['language_id']]) && $this->config->get('xd_onclose')['mobile_header'][$language['language_id']] != '') {
+                    $data['xd_onclose']['mobile_header'][$language['language_id']] = $this->config->get('xd_onclose')['mobile_header'][$language['language_id']];
+                } else {
+                    // Set default values
+                    if ($language_id == $this->config->get('config_language_id')) {
+                        $data['xd_onclose']['mobile_header'][$language['language_id']] = $this->language->get('default_mobile_header');
+                    }
+                }
+                if (isset($this->config->get('xd_onclose')['mobile_text'][$language['language_id']]) && $this->config->get('xd_onclose')['mobile_text'][$language['language_id']] != '') {
+                    $data['xd_onclose']['mobile_text'][$language['language_id']] = $this->config->get('xd_onclose')['mobile_text'][$language['language_id']];
+                } else {
+                    // Set default values
+                    if ($language_id == $this->config->get('config_language_id')) {
+                        $data['xd_onclose']['mobile_text'][$language['language_id']] = $this->language->get('default_mobile_text');
                     }
                 }
                 if (isset($this->config->get('xd_onclose')['success_field'][$language['language_id']]) && $this->config->get('xd_onclose')['success_field'][$language['language_id']] != '') {

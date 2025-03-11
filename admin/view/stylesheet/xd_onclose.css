@@ -110,6 +110,10 @@ select.form-control {
 }
 
 
+.field-tooltip {
+    margin-top: 12px;
+}
+
 
 .custom-select {
     min-width: 300px;
@@ -260,4 +264,88 @@ select.form-control {
 
 .form-check.form-check-inline.form-check-switcher>.switcher-text-after {
     margin-left: 8px;
+}
+
+
+
+fieldset.number-type {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+fieldset.number-type>label {
+    width: auto;
+    margin: 0;
+    line-height: 1.1;
+    text-align: left;
+    font-size: 17px;
+    line-height: 1;
+}
+
+fieldset.number-type input[type=number] {
+    max-width: 160px;
+    margin: 0;
+    text-align: right;
+}
+
+fieldset.number-type.number-type-plus-minus input[type=number] {
+    max-width: 50px;
+    border: none;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    margin: 0 6px;
+    font-size: 20px;
+    line-height: 32px;
+}
+
+/* Chrome, Safari, Edge, Opera */
+fieldset.number-type.number-type-plus-minus input[type=number]::-webkit-outer-spin-button,
+fieldset.number-type.number-type-plus-minus input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+fieldset.number-type.number-type-plus-minus input[type=number] {
+    appearance: textfield;
+    -moz-appearance: textfield;
+}
+
+fieldset.number-type.number-type-plus-minus>.count-item__wrapper {
+    width: auto;
+    min-width: 130px;
+    margin: 0;
+    line-height: 1.1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+fieldset.number-type.number-type-plus-minus>.count-item__wrapper .count-item__btn {
+    width: 32px;
+    height: 32px;
+    font-size: 26px;
+    cursor: pointer;
+    margin: 0;
+    padding: 4px;
+    text-align: center;
+    text-decoration: none;
+    font-family: inherit;
+    outline: none;
+    border-radius: 6px;
+    -webkit-user-select: none;
+    user-select: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: #193366;
+}
+
+fieldset.number-type.number-type-plus-minus>.count-item__wrapper .count-item__btn>svg {
+    fill: #fff;
 }

@@ -21,6 +21,12 @@ $_['settings_sms']          = 'Настройки SMS';
 $_['settings_analytics']    = 'Настройки аналитики';
 $_['text_tab_help']         = 'Помощь';
 
+// Cookie
+$_['cookie_days']               = 'Время жизни cookie';
+$_['cookie_days_tooltip']       = 'Количество дней, в течение которых cookie будет храниться в браузере пользователя и не будет повторно отображаться модальное окно';
+$_['mobile_seconds']            = 'Время отображения модального окна на мобильной версии';
+$_['mobile_seconds_tooltip']    = 'Время в секундах, после которого модальное окно будет отображаться на мобильной версии сайта';
+
 // Fields
 $_['field1_title']          = 'Имя';
 $_['field2_title']          = 'Телефон';
@@ -37,13 +43,16 @@ $_['value_validation_type1']        = '+7(000)000-00-00';
 $_['value_validation_type2']        = '+38(000)000-00-00';
 
 // Spam protection
-$_['entry_spam_protection']        = 'Дополнительная защита от спама';
+$_['entry_spam_protection']             = 'Дополнительная защита от спама';
 
 // Entry
-$_['entry_button_name']             = 'Текст на кнопке';
-$_['entry_status']                  = 'Статус модуля XD OnClose';
-$_['entry_success_field']           = 'Текст успешной отправки во всплывающем окне';
-$_['success_field_tooltip']         = 'Допустимо использовать html-теги';
+$_['entry_desktop_header']              = 'Заголовок модального окна на десктопе';
+$_['entry_desktop_text']                = 'Текст модального окна на десктопе';
+$_['entry_mobile_header']               = 'Заголовок модального окна на мобильном устройстве';
+$_['entry_mobile_text']                 = 'Текст модального окна на мобильном устройстве';
+$_['entry_status']                      = 'Статус модуля XD OnClose';
+$_['entry_success_field']               = 'Текст успешной отправки во всплывающем окне';
+$_['success_field_tooltip']             = 'Допустимо использовать html-теги';
 
 // Success
 $_['entry_success_type']            = 'После успешной отправки запроса';
@@ -66,8 +75,11 @@ $_['tab_styles_modal_style_default']            = 'По умолчанию';
 $_['tab_styles_modal_style_custom']             = 'Кастомный';
 
 // Default values
-$_['default_button_name']           = 'Заказать звонок';
-$_['default_success_field']         = '&lt;h2 class=&quot;text-center&quot;&gt;Спасибо!&lt;br /&gt;Мы свяжемся с вами в ближайшее время.&lt;/h2&gt;';
+$_['default_desktop_header']                    = 'Вы уже уходите? Подождите!';
+$_['default_desktop_text']                      = 'У нас есть специальное предложение для вас!&lt;br /&gt;&lt;strong&gt;Оставьте&lt;/strong&gt; свой номер телефона, и мы вам перезвоним!';
+$_['default_mobile_header']                     = 'Внимание! Только сегодня дополнительная скидка на все двери!';
+$_['default_mobile_text']                       = '&lt;p class=&quot;text-center&quot;&gt;Оставьте Ваши контактные данные и и мы сделаем Вам дополнительную скидку.&lt;/p&gt;';
+$_['default_success_field']                     = '&lt;h2 class=&quot;text-center&quot;&gt;Спасибо!&lt;br /&gt;Мы свяжемся с вами в ближайшее время.&lt;/h2&gt;';
 
 
 // Extended analytics

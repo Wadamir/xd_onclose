@@ -21,6 +21,12 @@ $_['settings_sms']          = 'SMS settings';
 $_['settings_analytics']    = 'Analytics settings';
 $_['text_tab_help']         = 'Help';
 
+// Cookie
+$_['cookie_days']               = 'Cookie lifetime';
+$_['cookie_days_tooltip']       = 'The number of days the cookie will be stored in the user\'s browser and the modal window will not be displayed again';
+$_['mobile_seconds']            = 'Mobile version display time';
+$_['mobile_seconds_tooltip']    = 'The time in seconds after which the modal window will be displayed on the mobile version of the site';
+
 // Fields
 $_['field1_title']          = 'Name';
 $_['field2_title']          = 'Phone';
@@ -41,10 +47,13 @@ $_['value_validation_type2']        = '+38(000)000-00-00';
 $_['entry_spam_protection']         = 'Additional spam protection';
 
 // Entry
-$_['entry_modal_header']            = 'Text on button';
-$_['entry_status']                  = 'Enable XD OnClose module';
-$_['entry_success_field']           = 'Success pop-up window text';
-$_['success_field_tooltip']         = 'Using HTML tags is allowed';
+$_['entry_desktop_header']              = 'Header of the modal window on desktop';
+$_['entry_desktop_text']                = 'Text of the modal window on desktop';
+$_['entry_mobile_header']               = 'Header of the modal window on mobile';
+$_['entry_mobile_text']                 = 'Text of the modal window on mobile';
+$_['entry_status']                      = 'Enable XD OnClose module';
+$_['entry_success_field']               = 'Success pop-up window text';
+$_['success_field_tooltip']             = 'Using HTML tags is allowed';
 
 // Success
 $_['entry_success_type']            = 'After successfully sending the request';
@@ -67,8 +76,11 @@ $_['tab_styles_modal_style_default']            = 'Default';
 $_['tab_styles_modal_style_custom']             = 'Custom';
 
 // Default values
-$_['default_modal_header']                  = 'Request a call back';
-$_['default_success_field']                 = '&lt;h2 class=&quot;text-center&quot;&gt;Thank you!&lt;br /&gt;We will contact you as soon as possible.&lt;/h2&gt;';
+$_['default_desktop_header']                    = 'Are you leaving? Wait!';
+$_['default_desktop_text']                      = 'We have a special offer for you!&lt;br /&gt;&lt;strong&gt;Leave&lt;/strong&gt; your phone number and we will call you back!';
+$_['default_mobile_header']                     = 'Attention! Only today an additional discount on all doors!';
+$_['default_mobile_text']                       = '&lt;p class=&quot;text-center&quot;&gt;We have a special offer for you! Leave your phone number and we will call you back!&lt;/p&gt;';
+$_['default_success_field']                     = '&lt;h2 class=&quot;text-center&quot;&gt;Thank you!&lt;br /&gt;We will contact you as soon as possible.&lt;/h2&gt;';
 
 
 
