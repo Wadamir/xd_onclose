@@ -3,6 +3,14 @@
 }
 
 /* Modal styles */
+#xd_onclose_modal .m-0 {
+    margin: 0;
+}
+
+#xd_onclose_modal .p-0 {
+    padding: 0;
+}
+
 #xd_onclose_modal .pt-1 {
     padding-top: 1em;
 }
@@ -11,9 +19,29 @@
     padding-bottom: 1em;
 }
 
+#xd_onclose_modal .py-1 {
+    padding-top: 1em;
+    padding-bottom: 1em;
+}
+
+#xd_onclose_modal .px-1 {
+    padding-left: 1em;
+    padding-right: 1em;
+}
+
 #xd_onclose_modal .text-description {
     font-size: 1.25em;
     line-height: 1.25em;
+}
+
+#xd_onclose_error {
+    font-size: 1.25em;
+    font-style: italic;
+    line-height: 1.5em;
+}
+
+#xd_onclose_modal .modal-title {
+    line-height: 1;
 }
 
 .modal.modal-custom .modal-dialog .modal-content {
@@ -79,6 +107,34 @@
 }
 
 /****** Captcha ******/
+#xd_onclose_modal .captcha.basic_captcha>.form-group {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+#xd_onclose_modal .captcha.basic_captcha>.form-group>label {
+    width: 100%;
+}
+
+#xd_onclose_modal .captcha.basic_captcha>.form-group>input {
+    order: 3;
+
+    width: calc(100% - 150px);
+    height: 35px;
+}
+
+#xd_onclose_modal .captcha.basic_captcha>.form-group>img {
+    order: 2;
+
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+    border: inline 1px solid #000;
+    outline: 1px solid #000;
+    outline-offset: -1px;
+}
+
+
 .captcha>.form-group {
     display: flex;
     flex-direction: column;

@@ -118,7 +118,7 @@
                                     </div>
                                 <?php } ?>
                                 <?php if (boolval($captcha)) { ?>
-                                    <div class="captcha <?= $captcha_class ?>">
+                                    <div id="xd_onclose_captcha" class="captcha <?= $captcha_class ?>">
                                         <?php echo $captcha; ?>
                                     </div>
                                 <?php } ?>
@@ -132,12 +132,19 @@
                             <?php } ?>
                         </div>
                         <div class="modal-footer">
-                            <div class="col-sm-2 hidden-xs">
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <div id="xd_onclose_error" class="pb-1 text-left text-danger hidden"></div>
+                                </div>
                             </div>
-                            <div class="col-sm-8 col-xs-12">
-                                <button type="submit" class="btn btn-lg btn-block btn-default"><?php echo $submit_button; ?></button>
-                            </div>
-                            <div class="col-sm-2 hidden-xs">
+                            <div class="row">
+                                <div class="col-sm-2 hidden-xs">
+                                </div>
+                                <div class="col-sm-8 col-xs-12">
+                                    <button type="submit" class="btn btn-lg btn-block btn-default"><?php echo $submit_button; ?></button>
+                                </div>
+                                <div class="col-sm-2 hidden-xs">
+                                </div>
                             </div>
                         </div>
                     </fieldset>
@@ -152,11 +159,11 @@
             console.log('Cookie on_close:', cookie_onclose);
             console.log('Mobile:', isMobile);
 
-            if (!cookie_onclose) { // Исправлена проверка
+            if (!cookie_onclose) {
                 if (isMobile) {
                     // Show on timeOut
                     setTimeout(function() {
-                        showModalOnClose('<?php echo $mobile_header ?>');
+                        showModalOnClose('<?php echo $mobile_header ?>', true);
                     }, <?= $mobile_seconds ?>);
                 } else {
                     // Show on mouse leave
@@ -169,7 +176,7 @@
                 }
             }
 
-            setCookie("xd_onclose", Date.now(), <?= $cookie_days ?>); // Исправлен вызов
+            setCookie("xd_onclose", Date.now(), <?= $cookie_days ?>);
 
             <?php if ($validation_type !== '0') { ?>
                 $('#xd_onclose_phone').mask('<?= $validation_type ?>');
@@ -181,18 +188,29 @@
             <?php } ?>
         });
 
-        function desktopMouseleave(event) { // Исправлено название функции
+        function desktopMouseleave(event) {
             if (event.clientY <= 0) {
-                showModalOnClose('<?php echo $desktop_header ?>');
+                showModalOnClose('<?php echo $desktop_header ?>', false);
             }
         }
 
-        function showModalOnClose(title) {
+        function showModalOnClose(title, isMobile = false) {
             let modal_title = document.getElementById('xd_onclose_modal_title');
+            let desktop_text = document.getElementById('desktop_text');
+            let mobile_text = document.getElementById('mobile_text');
             if (!modal_title) {
                 return;
             }
             modal_title.innerHTML = title;
+            if (desktop_text && mobile_text) {
+                if (isMobile) {
+                    desktop_text.classList.add('hidden');
+                    mobile_text.classList.remove('hidden');
+                } else {
+                    desktop_text.classList.remove('hidden');
+                    mobile_text.classList.add('hidden');
+                }
+            }
             $('#xd_onclose_modal').modal('show');
         }
 
@@ -201,7 +219,7 @@
             let matches = document.cookie.match(new RegExp(
                 "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
             ));
-            return matches ? decodeURIComponent(matches[1]) : null; // Возвращаем null вместо undefined
+            return matches ? decodeURIComponent(matches[1]) : null; // Return null if cookie not found
         }
 
         function setCookie(name, value, days) {

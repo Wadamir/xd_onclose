@@ -6,6 +6,7 @@ class ControllerModuleXDOnclose extends Controller
     private $field1_status = null;
     private $field2_status = null;
     private $field3_status = null;
+    private $phone_validation_type = null;
     private $captcha = null;
     private $spam_protection = null;
     private $exan_status = null;
@@ -82,6 +83,7 @@ class ControllerModuleXDOnclose extends Controller
                 $data['spam_protection'] = (isset($xd_onclose_setting['spam_protection'])) ? boolval($xd_onclose_setting['spam_protection']) : false;
                 $this->spam_protection = $data['spam_protection'];
                 $data['validation_type'] = (isset($xd_onclose_setting['validation_type'])) ? $xd_onclose_setting['validation_type'] : 0;
+                $this->phone_validation_type = $data['validation_type'];
 
                 // Success
                 $data['success_type'] = (isset($xd_onclose_setting['success_type'])) ? $xd_onclose_setting['success_type'] : 0;
@@ -259,9 +261,6 @@ class ControllerModuleXDOnclose extends Controller
             $sender_name = $this->config->get('config_name');
             $mail_title = sprintf($this->language->get('text_mail_title'), $this->config->get('config_name'));
 
-            // Log mail
-            $this->log->write('XD OnClose mail_title: ' . $mail_title);
-
             $mail = new Mail();
             $mail->protocol = $this->config->get('config_mail_protocol');
             $mail->parameter = $this->config->get('config_mail_parameter');
@@ -319,7 +318,14 @@ class ControllerModuleXDOnclose extends Controller
         // Validate phone number
         $this->field2_status = intval($xd_onclose_setting['field2_status']);
         if ($this->field2_status === 2) {
-            if ((utf8_strlen($this->request->post['xd_onclose_phone']) < 9) || (utf8_strlen($this->request->post['xd_onclose_phone']) > 20)) {
+            $min_length = 9;
+            $max_length = 20;
+            $this->phone_validation_type = $xd_onclose_setting['validation_type'];
+            if ($this->phone_validation_type) {
+                $min_length = utf8_strlen($this->phone_validation_type);
+                $max_length = utf8_strlen($this->phone_validation_type);
+            }
+            if ((utf8_strlen($this->request->post['xd_onclose_phone']) < $min_length) || (utf8_strlen($this->request->post['xd_onclose_phone']) > $max_length)) {
                 $this->error['message'] = $this->language->get('error_phone');
                 $this->error['input'] = 'xd_onclose_phone';
                 return false;
@@ -344,8 +350,15 @@ class ControllerModuleXDOnclose extends Controller
         }
 
         // Captcha
-        if ($this->captcha && !$this->validate_captcha()) {
-            return false;
+        $data['captcha'] = (isset($xd_onclose_setting['captcha'])) ? $xd_onclose_setting['captcha'] : 0; // Captcha
+        $this->captcha = $data['captcha'];
+        if ($this->captcha && $this->config->get($this->config->get('config_captcha') . '_status')) {
+            $captcha = $this->load->controller('captcha/' . $this->config->get('config_captcha') . '/validate');
+            if ($captcha) {
+                $this->error['message'] = $this->language->get('error_captcha');
+                $this->error['input'] = 'xd_onclose_captcha';
+                return false;
+            }
         }
 
 

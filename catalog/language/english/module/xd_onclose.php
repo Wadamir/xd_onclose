@@ -7,7 +7,7 @@ $_['mobile_text']          = '&lt;p class=&quot;text-center&quot;&gt;We have a s
 $_['field1_title']      = 'Name';
 $_['field2_title']      = 'Phone';
 $_['field3_title']      = 'Message';
-$_['text_agree']        = 'By clicking "SEND" button, you have read and agree to <a href="#" onclick=\'openInfo(event, "%s");\' class="agree"><b>%s</b></a>';
+$_['text_agree']        = 'By clicking "SEND" button, you have read and agree to <a href="#" onclick=\'onCloseOpenInfo(event, "%s");\' class="agree"><b>%s</b></a>';
 
 $_['required_text']     = 'required field';
 $_['success_field']     = '<h3>Thank you!<br />We will contact you as soon as possible.</h3>';
