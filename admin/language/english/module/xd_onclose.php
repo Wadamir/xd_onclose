@@ -78,7 +78,7 @@ $_['tab_styles_modal_style_custom']             = 'Custom';
 // Default values
 $_['default_desktop_header']                    = 'Are you leaving? Wait!';
 $_['default_desktop_text']                      = 'We have a special offer for you!&lt;br /&gt;&lt;strong&gt;Leave&lt;/strong&gt; your phone number and we will call you back!';
-$_['default_mobile_header']                     = 'Attention! Only today an additional discount on all doors!';
+$_['default_mobile_header']                     = 'Attention! Only today an additional discount on all products!';
 $_['default_mobile_text']                       = '&lt;p class=&quot;text-center&quot;&gt;We have a special offer for you! Leave your phone number and we will call you back!&lt;/p&gt;';
 $_['default_success_field']                     = '&lt;h2 class=&quot;text-center&quot;&gt;Thank you!&lt;br /&gt;We will contact you as soon as possible.&lt;/h2&gt;';
 

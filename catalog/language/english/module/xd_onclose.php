@@ -1,7 +1,7 @@
 <?php
 $_['desktop_header']       = 'Are you leaving? Wait!';
 $_['desktop_text']         = 'We have a special offer for you!&lt;br /&gt;&lt;strong&gt;Leave&lt;/strong&gt; your phone number and we will call you back!';
-$_['mobile_header']        = 'Attention! Only today an additional discount on all doors!';
+$_['mobile_header']        = 'Attention! Only today an additional discount on all products!';
 $_['mobile_text']          = '&lt;p class=&quot;text-center&quot;&gt;We have a special offer for you! Leave your phone number and we will call you back!&lt;/p&gt;';
 
 $_['field1_title']      = 'Name';

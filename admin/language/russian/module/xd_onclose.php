@@ -77,7 +77,7 @@ $_['tab_styles_modal_style_custom']             = 'Кастомный';
 // Default values
 $_['default_desktop_header']                    = 'Вы уже уходите? Подождите!';
 $_['default_desktop_text']                      = 'У нас есть специальное предложение для вас!&lt;br /&gt;&lt;strong&gt;Оставьте&lt;/strong&gt; свой номер телефона, и мы вам перезвоним!';
-$_['default_mobile_header']                     = 'Внимание! Только сегодня дополнительная скидка на все двери!';
+$_['default_mobile_header']                     = 'Внимание! Только сегодня дополнительная скидка на все товары!';
 $_['default_mobile_text']                       = '&lt;p class=&quot;text-center&quot;&gt;Оставьте Ваши контактные данные и и мы сделаем Вам дополнительную скидку.&lt;/p&gt;';
 $_['default_success_field']                     = '&lt;h2 class=&quot;text-center&quot;&gt;Спасибо!&lt;br /&gt;Мы свяжемся с вами в ближайшее время.&lt;/h2&gt;';
 

@@ -151,111 +151,116 @@ class ControllerModuleXDOnclose extends Controller
                 $mail_text .= $this->language->get('text_user_agent') . $user_agent . " \r\n";
             }
 
-            if (isset($this->request->post['xd_onclose_sb_udata_vst']) && $this->request->post['xd_onclose_sb_udata_vst'] != '') {
-                $xd_onclose_sb_udata_vst = $this->request->post['xd_onclose_sb_udata_vst'];
-                $mail_text .= $this->language->get('xd_onclose_sb_udata_vst') . $xd_onclose_sb_udata_vst . " \r\n";
-            }
-            if (isset($this->request->post['xd_onclose_sb_promo_code']) && $this->request->post['xd_onclose_sb_promo_code'] != '' && $this->request->post['xd_onclose_sb_promo_code'] != 'undefined') {
-                $xd_onclose_sb_promo_code = $this->request->post['xd_onclose_sb_promo_code'];
-                $mail_text .= $this->language->get('xd_onclose_sb_promo_code') . $xd_onclose_sb_promo_code . " \r\n";
-            }
-            // Private data end
+            if ($this->exan_status) {
+                if (isset($this->request->post['xd_onclose_sb_udata_vst']) && $this->request->post['xd_onclose_sb_udata_vst'] != '') {
+                    $xd_onclose_sb_udata_vst = $this->request->post['xd_onclose_sb_udata_vst'];
+                    $mail_text .= $this->language->get('xd_onclose_sb_udata_vst') . $xd_onclose_sb_udata_vst . " \r\n";
+                }
+                if (isset($this->request->post['xd_onclose_sb_promo_code']) && $this->request->post['xd_onclose_sb_promo_code'] != '' && $this->request->post['xd_onclose_sb_promo_code'] != 'undefined') {
+                    $xd_onclose_sb_promo_code = $this->request->post['xd_onclose_sb_promo_code'];
+                    $mail_text .= $this->language->get('xd_onclose_sb_promo_code') . $xd_onclose_sb_promo_code . " \r\n";
+                }
+                // Private data end
 
-            // Source first visit
-            $mail_text .= " \r\n" . $this->language->get('xd_onclose_sb_first_visit_title') . " \r\n";
-            if (isset($this->request->post['xd_onclose_sb_first_typ']) && $this->request->post['xd_onclose_sb_first_typ'] != '') {
-                $xd_onclose_sb_first_typ = $this->request->post['xd_onclose_sb_first_typ'];
-                $mail_text .= $this->language->get('xd_onclose_sb_first_typ') . $xd_onclose_sb_first_typ . " \r\n";
-            }
-            if (isset($this->request->post['xd_onclose_sb_first_src']) && $this->request->post['xd_onclose_sb_first_src'] != '') {
-                $xd_onclose_sb_first_src = $this->request->post['xd_onclose_sb_first_src'];
-                $mail_text .= $this->language->get('xd_onclose_sb_first_src') . $xd_onclose_sb_first_src . " \r\n";
-            }
-            if (isset($this->request->post['xd_onclose_sb_first_mdm']) && $this->request->post['xd_onclose_sb_first_mdm'] != '') {
-                $xd_onclose_sb_first_mdm = $this->request->post['xd_onclose_sb_first_mdm'];
-                $mail_text .= $this->language->get('xd_onclose_sb_first_mdm') . $xd_onclose_sb_first_mdm . " \r\n";
-            }
-            if (isset($this->request->post['xd_onclose_sb_first_cmp']) && $this->request->post['xd_onclose_sb_first_cmp'] != '') {
-                $xd_onclose_sb_first_cmp = $this->request->post['xd_onclose_sb_first_cmp'];
-                $mail_text .= $this->language->get('xd_onclose_sb_first_cmp') . $xd_onclose_sb_first_cmp . " \r\n";
-            }
-            if (isset($this->request->post['xd_onclose_sb_first_cnt']) && $this->request->post['xd_onclose_sb_first_cnt'] != '') {
-                $xd_onclose_sb_first_cnt = $this->request->post['xd_onclose_sb_first_cnt'];
-                $mail_text .= $this->language->get('xd_onclose_sb_first_cnt') . $xd_onclose_sb_first_cnt . " \r\n";
-            }
-            if (isset($this->request->post['xd_onclose_sb_first_trm']) && $this->request->post['xd_onclose_sb_first_trm'] != '') {
-                $xd_onclose_sb_first_trm = $this->request->post['xd_onclose_sb_first_trm'];
-                $mail_text .= $this->language->get('xd_onclose_sb_first_trm') . $xd_onclose_sb_first_trm . " \r\n";
-            }
-            if (isset($this->request->post['xd_onclose_sb_first_add_fd']) && $this->request->post['xd_onclose_sb_first_add_fd'] != '') {
-                $xd_onclose_sb_first_add_fd = $this->request->post['xd_onclose_sb_first_add_fd'];
-                $mail_text .= $this->language->get('xd_onclose_sb_first_add_fd') . $xd_onclose_sb_first_add_fd . " \r\n";
-            }
-            if (isset($this->request->post['xd_onclose_sb_first_add_ep']) && $this->request->post['xd_onclose_sb_first_add_ep'] != '') {
-                $xd_onclose_sb_first_add_ep = $this->request->post['xd_onclose_sb_first_add_ep'];
-                $mail_text .= $this->language->get('xd_onclose_sb_first_add_ep') . $xd_onclose_sb_first_add_ep . " \r\n";
-            }
-            if (isset($this->request->post['xd_onclose_sb_first_add_rf']) && $this->request->post['xd_onclose_sb_first_add_rf'] != '') {
-                $xd_onclose_sb_first_add_rf = $this->request->post['xd_onclose_sb_first_add_rf'];
-                $mail_text .= $this->language->get('xd_onclose_sb_first_add_rf') . $xd_onclose_sb_first_add_rf . " \r\n";
-            }
-            // Source first visit end
+                // Source first visit
+                $mail_text .= " \r\n" . $this->language->get('xd_onclose_sb_first_visit_title') . " \r\n";
+                if (isset($this->request->post['xd_onclose_sb_first_typ']) && $this->request->post['xd_onclose_sb_first_typ'] != '') {
+                    $xd_onclose_sb_first_typ = $this->request->post['xd_onclose_sb_first_typ'];
+                    $mail_text .= $this->language->get('xd_onclose_sb_first_typ') . $xd_onclose_sb_first_typ . " \r\n";
+                }
+                if (isset($this->request->post['xd_onclose_sb_first_src']) && $this->request->post['xd_onclose_sb_first_src'] != '') {
+                    $xd_onclose_sb_first_src = $this->request->post['xd_onclose_sb_first_src'];
+                    $mail_text .= $this->language->get('xd_onclose_sb_first_src') . $xd_onclose_sb_first_src . " \r\n";
+                }
+                if (isset($this->request->post['xd_onclose_sb_first_mdm']) && $this->request->post['xd_onclose_sb_first_mdm'] != '') {
+                    $xd_onclose_sb_first_mdm = $this->request->post['xd_onclose_sb_first_mdm'];
+                    $mail_text .= $this->language->get('xd_onclose_sb_first_mdm') . $xd_onclose_sb_first_mdm . " \r\n";
+                }
+                if (isset($this->request->post['xd_onclose_sb_first_cmp']) && $this->request->post['xd_onclose_sb_first_cmp'] != '') {
+                    $xd_onclose_sb_first_cmp = $this->request->post['xd_onclose_sb_first_cmp'];
+                    $mail_text .= $this->language->get('xd_onclose_sb_first_cmp') . $xd_onclose_sb_first_cmp . " \r\n";
+                }
+                if (isset($this->request->post['xd_onclose_sb_first_cnt']) && $this->request->post['xd_onclose_sb_first_cnt'] != '') {
+                    $xd_onclose_sb_first_cnt = $this->request->post['xd_onclose_sb_first_cnt'];
+                    $mail_text .= $this->language->get('xd_onclose_sb_first_cnt') . $xd_onclose_sb_first_cnt . " \r\n";
+                }
+                if (isset($this->request->post['xd_onclose_sb_first_trm']) && $this->request->post['xd_onclose_sb_first_trm'] != '') {
+                    $xd_onclose_sb_first_trm = $this->request->post['xd_onclose_sb_first_trm'];
+                    $mail_text .= $this->language->get('xd_onclose_sb_first_trm') . $xd_onclose_sb_first_trm . " \r\n";
+                }
+                if (isset($this->request->post['xd_onclose_sb_first_add_fd']) && $this->request->post['xd_onclose_sb_first_add_fd'] != '') {
+                    $xd_onclose_sb_first_add_fd = $this->request->post['xd_onclose_sb_first_add_fd'];
+                    $mail_text .= $this->language->get('xd_onclose_sb_first_add_fd') . $xd_onclose_sb_first_add_fd . " \r\n";
+                }
+                if (isset($this->request->post['xd_onclose_sb_first_add_ep']) && $this->request->post['xd_onclose_sb_first_add_ep'] != '') {
+                    $xd_onclose_sb_first_add_ep = $this->request->post['xd_onclose_sb_first_add_ep'];
+                    $mail_text .= $this->language->get('xd_onclose_sb_first_add_ep') . $xd_onclose_sb_first_add_ep . " \r\n";
+                }
+                if (isset($this->request->post['xd_onclose_sb_first_add_rf']) && $this->request->post['xd_onclose_sb_first_add_rf'] != '') {
+                    $xd_onclose_sb_first_add_rf = $this->request->post['xd_onclose_sb_first_add_rf'];
+                    $mail_text .= $this->language->get('xd_onclose_sb_first_add_rf') . $xd_onclose_sb_first_add_rf . " \r\n";
+                }
+                // Source first visit end
 
-            // Source current visit
-            $mail_text .= " \r\n" . $this->language->get('xd_onclose_sb_current_visit_title') . " \r\n";
-            if (isset($this->request->post['xd_onclose_sb_current_typ']) && $this->request->post['xd_onclose_sb_current_typ'] != '') {
-                $xd_onclose_sb_current_typ = $this->request->post['xd_onclose_sb_current_typ'];
-                $mail_text .= $this->language->get('xd_onclose_sb_current_typ') . $xd_onclose_sb_current_typ . " \r\n";
-            }
-            if (isset($this->request->post['xd_onclose_sb_current_src']) && $this->request->post['xd_onclose_sb_current_src'] != '') {
-                $xd_onclose_sb_current_src = $this->request->post['xd_onclose_sb_current_src'];
-                $mail_text .= $this->language->get('xd_onclose_sb_current_src') . $xd_onclose_sb_current_src . " \r\n";
-            }
-            if (isset($this->request->post['xd_onclose_sb_current_mdm']) && $this->request->post['xd_onclose_sb_current_mdm'] != '') {
-                $xd_onclose_sb_current_mdm = $this->request->post['xd_onclose_sb_current_mdm'];
-                $mail_text .= $this->language->get('xd_onclose_sb_current_mdm') . $xd_onclose_sb_current_mdm . " \r\n";
-            }
-            if (isset($this->request->post['xd_onclose_sb_current_cmp']) && $this->request->post['xd_onclose_sb_current_cmp'] != '') {
-                $xd_onclose_sb_current_cmp = $this->request->post['xd_onclose_sb_current_cmp'];
-                $mail_text .= $this->language->get('xd_onclose_sb_current_cmp') . $xd_onclose_sb_current_cmp . " \r\n";
-            }
-            if (isset($this->request->post['xd_onclose_sb_current_cnt']) && $this->request->post['xd_onclose_sb_current_cnt'] != '') {
-                $xd_onclose_sb_current_cnt = $this->request->post['xd_onclose_sb_current_cnt'];
-                $mail_text .= $this->language->get('xd_onclose_sb_current_cnt') . $xd_onclose_sb_current_cnt . " \r\n";
-            }
-            if (isset($this->request->post['xd_onclose_sb_current_trm']) && $this->request->post['xd_onclose_sb_current_trm'] != '') {
-                $xd_onclose_sb_current_trm = $this->request->post['xd_onclose_sb_current_trm'];
-                $mail_text .= $this->language->get('xd_onclose_sb_current_trm') . $xd_onclose_sb_current_trm . " \r\n";
-            }
-            if (isset($this->request->post['xd_onclose_sb_current_add_fd']) && $this->request->post['xd_onclose_sb_current_add_fd'] != '') {
-                $xd_onclose_sb_current_add_fd = $this->request->post['xd_onclose_sb_current_add_fd'];
-                $mail_text .= $this->language->get('xd_onclose_sb_current_add_fd') . $xd_onclose_sb_current_add_fd . " \r\n";
-            }
-            if (isset($this->request->post['xd_onclose_sb_current_add_ep']) && $this->request->post['xd_onclose_sb_current_add_ep'] != '') {
-                $xd_onclose_sb_current_add_ep = $this->request->post['xd_onclose_sb_current_add_ep'];
-                $mail_text .= $this->language->get('xd_onclose_sb_current_add_ep') . $xd_onclose_sb_current_add_ep . " \r\n";
-            }
-            if (isset($this->request->post['xd_onclose_sb_current_add_rf']) && $this->request->post['xd_onclose_sb_current_add_rf'] != '') {
-                $xd_onclose_sb_current_add_rf = $this->request->post['xd_onclose_sb_current_add_rf'];
-                $mail_text .= $this->language->get('xd_onclose_sb_current_add_rf') . $xd_onclose_sb_current_add_rf . " \r\n";
-            }
-            // Source current visit end
+                // Source current visit
+                $mail_text .= " \r\n" . $this->language->get('xd_onclose_sb_current_visit_title') . " \r\n";
+                if (isset($this->request->post['xd_onclose_sb_current_typ']) && $this->request->post['xd_onclose_sb_current_typ'] != '') {
+                    $xd_onclose_sb_current_typ = $this->request->post['xd_onclose_sb_current_typ'];
+                    $mail_text .= $this->language->get('xd_onclose_sb_current_typ') . $xd_onclose_sb_current_typ . " \r\n";
+                }
+                if (isset($this->request->post['xd_onclose_sb_current_src']) && $this->request->post['xd_onclose_sb_current_src'] != '') {
+                    $xd_onclose_sb_current_src = $this->request->post['xd_onclose_sb_current_src'];
+                    $mail_text .= $this->language->get('xd_onclose_sb_current_src') . $xd_onclose_sb_current_src . " \r\n";
+                }
+                if (isset($this->request->post['xd_onclose_sb_current_mdm']) && $this->request->post['xd_onclose_sb_current_mdm'] != '') {
+                    $xd_onclose_sb_current_mdm = $this->request->post['xd_onclose_sb_current_mdm'];
+                    $mail_text .= $this->language->get('xd_onclose_sb_current_mdm') . $xd_onclose_sb_current_mdm . " \r\n";
+                }
+                if (isset($this->request->post['xd_onclose_sb_current_cmp']) && $this->request->post['xd_onclose_sb_current_cmp'] != '') {
+                    $xd_onclose_sb_current_cmp = $this->request->post['xd_onclose_sb_current_cmp'];
+                    $mail_text .= $this->language->get('xd_onclose_sb_current_cmp') . $xd_onclose_sb_current_cmp . " \r\n";
+                }
+                if (isset($this->request->post['xd_onclose_sb_current_cnt']) && $this->request->post['xd_onclose_sb_current_cnt'] != '') {
+                    $xd_onclose_sb_current_cnt = $this->request->post['xd_onclose_sb_current_cnt'];
+                    $mail_text .= $this->language->get('xd_onclose_sb_current_cnt') . $xd_onclose_sb_current_cnt . " \r\n";
+                }
+                if (isset($this->request->post['xd_onclose_sb_current_trm']) && $this->request->post['xd_onclose_sb_current_trm'] != '') {
+                    $xd_onclose_sb_current_trm = $this->request->post['xd_onclose_sb_current_trm'];
+                    $mail_text .= $this->language->get('xd_onclose_sb_current_trm') . $xd_onclose_sb_current_trm . " \r\n";
+                }
+                if (isset($this->request->post['xd_onclose_sb_current_add_fd']) && $this->request->post['xd_onclose_sb_current_add_fd'] != '') {
+                    $xd_onclose_sb_current_add_fd = $this->request->post['xd_onclose_sb_current_add_fd'];
+                    $mail_text .= $this->language->get('xd_onclose_sb_current_add_fd') . $xd_onclose_sb_current_add_fd . " \r\n";
+                }
+                if (isset($this->request->post['xd_onclose_sb_current_add_ep']) && $this->request->post['xd_onclose_sb_current_add_ep'] != '') {
+                    $xd_onclose_sb_current_add_ep = $this->request->post['xd_onclose_sb_current_add_ep'];
+                    $mail_text .= $this->language->get('xd_onclose_sb_current_add_ep') . $xd_onclose_sb_current_add_ep . " \r\n";
+                }
+                if (isset($this->request->post['xd_onclose_sb_current_add_rf']) && $this->request->post['xd_onclose_sb_current_add_rf'] != '') {
+                    $xd_onclose_sb_current_add_rf = $this->request->post['xd_onclose_sb_current_add_rf'];
+                    $mail_text .= $this->language->get('xd_onclose_sb_current_add_rf') . $xd_onclose_sb_current_add_rf . " \r\n";
+                }
+                // Source current visit end
 
-            // Current session
-            $mail_text .= " \r\n" . $this->language->get('xd_onclose_sb_session_title') . " \r\n";
-            if (isset($this->request->post['xd_onclose_sb_session_pgs']) && $this->request->post['xd_onclose_sb_session_pgs'] != '') {
-                $xd_onclose_sb_session_pgs = $this->request->post['xd_onclose_sb_session_pgs'];
-                $mail_text .= $this->language->get('xd_onclose_sb_session_pgs') . $xd_onclose_sb_session_pgs . " \r\n";
+                // Current session
+                $mail_text .= " \r\n" . $this->language->get('xd_onclose_sb_session_title') . " \r\n";
+                if (isset($this->request->post['xd_onclose_sb_session_pgs']) && $this->request->post['xd_onclose_sb_session_pgs'] != '') {
+                    $xd_onclose_sb_session_pgs = $this->request->post['xd_onclose_sb_session_pgs'];
+                    $mail_text .= $this->language->get('xd_onclose_sb_session_pgs') . $xd_onclose_sb_session_pgs . " \r\n";
+                }
+                if (isset($this->request->post['xd_onclose_sb_session_cpg']) && $this->request->post['xd_onclose_sb_session_cpg'] != '') {
+                    $xd_onclose_sb_session_cpg = $this->request->post['xd_onclose_sb_session_cpg'];
+                    $mail_text .= $this->language->get('xd_onclose_sb_session_cpg') . $xd_onclose_sb_session_cpg . " \r\n";
+                }
+                // Current session end
             }
-            if (isset($this->request->post['xd_onclose_sb_session_cpg']) && $this->request->post['xd_onclose_sb_session_cpg'] != '') {
-                $xd_onclose_sb_session_cpg = $this->request->post['xd_onclose_sb_session_cpg'];
-                $mail_text .= $this->language->get('xd_onclose_sb_session_cpg') . $xd_onclose_sb_session_cpg . " \r\n";
-            }
-            // Current session end
 
             $from_email = 'xd_onclose@' . $_SERVER['SERVER_NAME'];
             $sender_name = $this->config->get('config_name');
             $mail_title = sprintf($this->language->get('text_mail_title'), $this->config->get('config_name'));
+
+            // Log mail
+            $this->log->write('XD OnClose mail_title: ' . $mail_title);
 
             $mail = new Mail();
             $mail->protocol = $this->config->get('config_mail_protocol');
@@ -337,6 +342,12 @@ class ControllerModuleXDOnclose extends Controller
                 return false;
             }
         }
+
+        // Captcha
+        if ($this->captcha && !$this->validate_captcha()) {
+            return false;
+        }
+
 
         return !$this->error;
     }

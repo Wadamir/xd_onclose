@@ -1,7 +1,7 @@
 <?php
 $_['desktop_header']       = 'Уже уходите? Подождите!';
 $_['desktop_text']         = 'У нас для Вас специальное предложение!&lt;br /&gt;&lt;strong&gt;Оставьте&lt;/strong&gt; свой номер телефона и мы Вам перезвоним!';
-$_['mobile_header']        = 'Внимание! Только сегодня дополнительная скидка на все двери!';
+$_['mobile_header']        = 'Внимание! Только сегодня дополнительная скидка на все товары!';
 $_['mobile_text']          = '&lt;p class=&quot;text-center&quot;&gt;У нас для Вас специальное предложение! Оставьте свой номер телефона и мы Вам перезвоним!&lt;/p&gt;';
 
 $_['field1_title']      = 'Имя';
@@ -30,7 +30,7 @@ $_['text_ip']                       = 'IP-адрес: ';
 $_['text_forwarded_ip']             = 'Forwarded IP: ';
 $_['text_user_agent']               = 'User agent: ';
 $_['text_sender_name']              = 'XD OnClose';
-$_['text_mail_title']               = 'Заказ обратного звонка - %s';
+$_['text_mail_title']               = 'Форма OnClose - %s';
 
 // sourcebuster
 $_['xd_onclose_sb_first_visit_title']          = 'Первый визит';
