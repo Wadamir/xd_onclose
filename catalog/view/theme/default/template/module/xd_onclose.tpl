@@ -182,8 +182,10 @@
                 $('#xd_onclose_phone').mask('<?= $validation_type ?>');
             <?php } ?>
             <?php if ($exan_status) { ?>
+                console.log('Exan status:', <?= $exan_status ?>);
                 sbjs.init({
-                    xd_onclose: onClosePlaceData
+                    lifetime: 3,
+                    callback: onClosePlaceData,
                 });
             <?php } ?>
         });
@@ -233,7 +235,7 @@
         <?php if ($exan_status) { ?>
 
             function onClosePlaceData(sb) {
-                // console.log(sb);
+                console.log(sb);
                 document.getElementById('xd_onclose_sb_first_typ').value = sb.first.typ;
                 document.getElementById('xd_onclose_sb_first_src').value = sb.first.src;
                 document.getElementById('xd_onclose_sb_first_mdm').value = sb.first.mdm;
