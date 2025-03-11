@@ -153,42 +153,42 @@
         </div>
     </div>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            let isMobile = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
-            let cookie_onclose = getCookie('xd_onclose');
-            console.log('Cookie on_close:', cookie_onclose);
-            console.log('Mobile:', isMobile);
+        <?php if ($exan_status) { ?>
 
-            if (!cookie_onclose) {
-                if (isMobile) {
-                    // Show on timeOut
-                    setTimeout(function() {
-                        showModalOnClose('<?php echo $mobile_header ?>', true);
-                    }, <?= $mobile_seconds ?>);
-                } else {
-                    // Show on mouse leave
-                    document.addEventListener('mouseleave', desktopMouseleave, false);
-                    // Remove event listener on modal show
-                    $('#xd_onclose_modal').on('show.bs.modal', function() {
-                        console.log('Remove event listener');
-                        document.removeEventListener('mouseleave', desktopMouseleave, false);
-                    });
-                }
+            function onClosePlaceData(sb) {
+                console.log(sb);
+                document.getElementById('xd_onclose_sb_first_typ').value = sb.first.typ;
+                document.getElementById('xd_onclose_sb_first_src').value = sb.first.src;
+                document.getElementById('xd_onclose_sb_first_mdm').value = sb.first.mdm;
+                document.getElementById('xd_onclose_sb_first_cmp').value = sb.first.cmp;
+                document.getElementById('xd_onclose_sb_first_cnt').value = sb.first.cnt;
+                document.getElementById('xd_onclose_sb_first_trm').value = sb.first.trm;
+
+                document.getElementById('xd_onclose_sb_current_typ').value = sb.current.typ;
+                document.getElementById('xd_onclose_sb_current_src').value = sb.current.src;
+                document.getElementById('xd_onclose_sb_current_mdm').value = sb.current.mdm;
+                document.getElementById('xd_onclose_sb_current_cmp').value = sb.current.cmp;
+                document.getElementById('xd_onclose_sb_current_cnt').value = sb.current.cnt;
+                document.getElementById('xd_onclose_sb_current_trm').value = sb.current.trm;
+
+                document.getElementById('xd_onclose_sb_first_add_fd').value = sb.first_add.fd;
+                document.getElementById('xd_onclose_sb_first_add_ep').value = sb.first_add.ep;
+                document.getElementById('xd_onclose_sb_first_add_rf').value = sb.first_add.rf;
+
+                document.getElementById('xd_onclose_sb_current_add_fd').value = sb.current_add.fd;
+                document.getElementById('xd_onclose_sb_current_add_ep').value = sb.current_add.ep;
+                document.getElementById('xd_onclose_sb_current_add_rf').value = sb.current_add.rf;
+
+                document.getElementById('xd_onclose_sb_session_pgs').value = sb.session.pgs;
+                document.getElementById('xd_onclose_sb_session_cpg').value = sb.session.cpg;
+
+                document.getElementById('xd_onclose_sb_udata_vst').value = sb.udata.vst;
+                document.getElementById('xd_onclose_sb_udata_uip').value = sb.udata.uip;
+                document.getElementById('xd_onclose_sb_udata_uag').value = sb.udata.uag;
+
+                document.getElementById('xd_onclose_sb_promo_code').value = sb.promo.code;
             }
-
-            setCookie("xd_onclose", Date.now(), <?= $cookie_days ?>);
-
-            <?php if ($validation_type !== '0') { ?>
-                $('#xd_onclose_phone').mask('<?= $validation_type ?>');
-            <?php } ?>
-            <?php if ($exan_status) { ?>
-                console.log('Exan status:', <?= $exan_status ?>);
-                sbjs.init({
-                    lifetime: 3,
-                    callback: onClosePlaceData,
-                });
-            <?php } ?>
-        });
+        <?php } ?>
 
         function desktopMouseleave(event) {
             if (event.clientY <= 0) {
@@ -230,45 +230,45 @@
             document.cookie = name + "=" + encodeURIComponent(value) + "; expires=" + date.toUTCString() + "; path=/";
         }
 
+        document.addEventListener('DOMContentLoaded', function() {
+            let isMobile = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+            let cookie_onclose = getCookie('xd_onclose');
+            console.log('Cookie on_close:', cookie_onclose);
+            console.log('Mobile:', isMobile);
 
-
-        <?php if ($exan_status) { ?>
-
-            function onClosePlaceData(sb) {
-                console.log(sb);
-                document.getElementById('xd_onclose_sb_first_typ').value = sb.first.typ;
-                document.getElementById('xd_onclose_sb_first_src').value = sb.first.src;
-                document.getElementById('xd_onclose_sb_first_mdm').value = sb.first.mdm;
-                document.getElementById('xd_onclose_sb_first_cmp').value = sb.first.cmp;
-                document.getElementById('xd_onclose_sb_first_cnt').value = sb.first.cnt;
-                document.getElementById('xd_onclose_sb_first_trm').value = sb.first.trm;
-
-                document.getElementById('xd_onclose_sb_current_typ').value = sb.current.typ;
-                document.getElementById('xd_onclose_sb_current_src').value = sb.current.src;
-                document.getElementById('xd_onclose_sb_current_mdm').value = sb.current.mdm;
-                document.getElementById('xd_onclose_sb_current_cmp').value = sb.current.cmp;
-                document.getElementById('xd_onclose_sb_current_cnt').value = sb.current.cnt;
-                document.getElementById('xd_onclose_sb_current_trm').value = sb.current.trm;
-
-                document.getElementById('xd_onclose_sb_first_add_fd').value = sb.first_add.fd;
-                document.getElementById('xd_onclose_sb_first_add_ep').value = sb.first_add.ep;
-                document.getElementById('xd_onclose_sb_first_add_rf').value = sb.first_add.rf;
-
-                document.getElementById('xd_onclose_sb_current_add_fd').value = sb.current_add.fd;
-                document.getElementById('xd_onclose_sb_current_add_ep').value = sb.current_add.ep;
-                document.getElementById('xd_onclose_sb_current_add_rf').value = sb.current_add.rf;
-
-                document.getElementById('xd_onclose_sb_session_pgs').value = sb.session.pgs;
-                document.getElementById('xd_onclose_sb_session_cpg').value = sb.session.cpg;
-
-                document.getElementById('xd_onclose_sb_udata_vst').value = sb.udata.vst;
-                document.getElementById('xd_onclose_sb_udata_uip').value = sb.udata.uip;
-                document.getElementById('xd_onclose_sb_udata_uag').value = sb.udata.uag;
-
-                document.getElementById('xd_onclose_sb_promo_code').value = sb.promo.code;
+            if (!cookie_onclose) {
+                if (isMobile) {
+                    // Show on timeOut
+                    setTimeout(function() {
+                        showModalOnClose('<?php echo $mobile_header ?>', true);
+                    }, <?= $mobile_seconds ?>);
+                } else {
+                    // Show on mouse leave
+                    document.addEventListener('mouseleave', desktopMouseleave, false);
+                    // Remove event listener on modal show
+                    $('#xd_onclose_modal').on('show.bs.modal', function() {
+                        console.log('Remove event listener');
+                        document.removeEventListener('mouseleave', desktopMouseleave, false);
+                    });
+                }
             }
 
-        <?php } ?>
+            setCookie("xd_onclose", Date.now(), <?= $cookie_days ?>);
+
+            <?php if ($validation_type !== '0') { ?>
+                $('#xd_onclose_phone').mask('<?= $validation_type ?>');
+            <?php } ?>
+            <?php if ($exan_status) { ?>
+
+                function logSource(sbData) {
+                    console.log(`Cookies are set! Your source is: ${sbData.current.src}`);
+                }
+
+                sbjs.init({
+                    callback: logSource
+                });
+            <?php } ?>
+        });
     </script>
 <?php } ?>
 <!-- xd onclose module end -->
