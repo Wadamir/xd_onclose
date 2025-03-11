@@ -103,7 +103,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
 function formValidation(formElem) {
     var elements = $(formElem).find('input.required');
+    console.log('elements - ', elements);
     var telElements = $(formElem).find('input[type=tel]');
+    console.log('telElements - ', telElements);
     var errorCounter = 0;
 
     $(elements).each(function (indx, elem) {
