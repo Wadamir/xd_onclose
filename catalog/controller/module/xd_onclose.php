@@ -355,6 +355,8 @@ class ControllerModuleXDOnclose extends Controller
         // Captcha
         $data['captcha'] = (isset($xd_onclose_setting['captcha'])) ? $xd_onclose_setting['captcha'] : 0; // Captcha
         $this->captcha = $data['captcha'];
+        $this->log->write('captcha: ' . $this->captcha);
+        $this->log->write('captcha status: ' . $this->config->get($this->captcha . '_status'));
         if ($this->captcha && $this->config->get($this->config->get('config_captcha') . '_status')) {
             $captcha = $this->load->controller('captcha/' . $this->config->get('config_captcha') . '/validate');
             if ($captcha) {
