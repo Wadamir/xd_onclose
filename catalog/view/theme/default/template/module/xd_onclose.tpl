@@ -119,11 +119,11 @@
                                 <?php } ?>
                                 <?php if ($field_custom_status > 0) { ?>
                                     <div class="form-group form-group-custom <?= ($field_custom_status === 2) ? ' has-warning' : '' ?>">
-                                        <label for="xd_callback_custom" class="control-label"><?php echo $field_custom_title; ?></label>
+                                        <label for="xd_onclose_custom" class="control-label"><?php echo $field_custom_title; ?></label>
                                         <?php if ($field_custom_type === 'text') { ?>
-                                            <input id="xd_callback_custom" class="form-control xd_callback-input<?= ($field_custom_status === 2) ? ' required' : '' ?>" type="text" name="xd_callback_custom" placeholder="<?php echo $field_custom_title; ?>">
+                                            <input id="xd_onclose_custom" class="form-control xd_onclose-input<?= ($field_custom_status === 2) ? ' required' : '' ?>" type="text" name="xd_onclose_custom" placeholder="<?php echo $field_custom_title; ?>">
                                         <?php } else if ($field_custom_type === 'textarea') { ?>
-                                            <textarea id="xd_callback_custom" class="form-control xd_callback-input<?= ($field_custom_status === 2) ? ' required' : '' ?>" name="xd_callback_custom" rows="3" placeholder="<?php echo $field_custom_title; ?>"></textarea>
+                                            <textarea id="xd_onclose_custom" class="form-control xd_onclose-input<?= ($field_custom_status === 2) ? ' required' : '' ?>" name="xd_onclose_custom" rows="3" placeholder="<?php echo $field_custom_title; ?>"></textarea>
                                         <?php } ?>
                                     </div>
                                 <?php } ?>
