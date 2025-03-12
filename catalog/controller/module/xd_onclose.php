@@ -283,6 +283,17 @@ class ControllerModuleXDOnclose extends Controller
 
             if (!$mail_result) {
                 $json['success'] = 'Success sending';
+                // Success
+                $data['success_type'] = (isset($xd_onclose_setting['success_type'])) ? intval($xd_onclose_setting['success_type']) : 0;
+                $this->log->write('Success sending');
+                $this->log->write($data['success_type']);
+                $data['success_utm'] = (isset($xd_onclose_setting['success_utm'])) ? 'utm_source=' . trim($xd_onclose_setting['success_utm']) : '';
+                $this->log->write($data['success_utm']);
+                if ($data['success_type'] === 1 && $data['success_utm'] !== '') {
+                    $json['redirect'] = $this->url->link('checkout/success', 'utm_source=' . $data['success_utm'], 'SSL');
+                } else if ($data['success_type'] === 1) {
+                    $json['redirect'] = $this->url->link('checkout/success', '', 'SSL');
+                }
             } else {
                 $json['error'] = 'Error sending';
             }

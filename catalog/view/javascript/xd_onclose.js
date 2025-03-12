@@ -50,10 +50,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
     document.getElementById('xd_onclose-form').addEventListener('submit', function (event) {
         event.preventDefault();
-        if (!onCloseFormValidation(this)) return false;
+        // if (!onCloseFormValidation(this)) return false;
 
         let submitBtn = this.querySelector('button[type=submit]');
         let errorElem = document.getElementById('xd_onclose_error');
+
+        // let successType = this.getElementById('xd_onclose_success_type').value;
 
         submitBtn.disabled = true;
         submitBtn.classList.add('disabled');
@@ -96,12 +98,16 @@ document.addEventListener("DOMContentLoaded", function () {
                     errorElem.classList.add('hidden');
                     document.getElementById('xd_onclose-form').reset();
                     submitBtn.disabled = false;
-                    submitBtn.classList.remove('disabled');
-                    $('#xd_onclose_modal').modal('hide');
-                    $('#xd_onclose_success').modal('show');
-                    setTimeout(() => {
-                        $('#xd_onclose_success').modal('hide');
-                    }, 5000);
+                    if (json.redirect) {
+                        window.location.href = json.redirect;
+                    } else {
+                        submitBtn.classList.remove('disabled');
+                        $('#xd_onclose_modal').modal('hide');
+                        $('#xd_onclose_success').modal('show');
+                        setTimeout(() => {
+                            $('#xd_onclose_success').modal('hide');
+                        }, 5000);
+                    }
                 }
             })
             .catch(error => {
