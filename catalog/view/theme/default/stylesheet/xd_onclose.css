@@ -40,7 +40,7 @@
     line-height: 1.5em;
 }
 
-#xd_onclose_modal .modal-title {
+#xd_callback_modal .modal-title {
     line-height: 1;
 }
 
@@ -77,6 +77,20 @@
     font-size: 14px;
     line-height: 140%;
     height: 44px;
+}
+
+.modal.modal-custom .modal-dialog .modal-content .modal-body .has-warning label {
+    padding-left: 15px;
+    color: #000;
+}
+
+.modal.modal-custom .modal-dialog .modal-content .modal-body .has-warning label:before {
+    content: "* ";
+    color: #FF0000;
+}
+
+.modal.modal-custom .modal-dialog .modal-content .modal-body .form-group-custom input {
+    border-radius: 8px;
 }
 
 .modal.modal-custom .modal-dialog .modal-content .modal-body textarea {

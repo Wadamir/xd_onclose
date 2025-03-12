@@ -60,6 +60,11 @@ class ControllerModuleXDOnclose extends Controller
                 $this->field3_status = $data['field3_status'];
                 $data['field3_title'] = $this->language->get('field3_title'); // Message title
 
+                // Custom field
+                $data['field_custom_type'] = (isset($xd_onclose_setting['field_custom_type'])) ? $xd_onclose_setting['field_custom_type'] : '';
+                $data['field_custom_status'] = (isset($xd_onclose_setting['field_custom_status'])) ? intval($xd_onclose_setting['field_custom_status']) : 0;
+                $data['field_custom_title'] = (isset($xd_onclose_setting['field_custom_title'][$current_language_id])) ? $xd_onclose_setting['field_custom_title'][$current_language_id] : '';
+
                 // Captcha
                 $data['captcha'] = (isset($xd_onclose_setting['captcha'])) ? $xd_onclose_setting['captcha'] : 0; // Captcha
                 $this->captcha = $data['captcha'];
@@ -130,6 +135,13 @@ class ControllerModuleXDOnclose extends Controller
             if (isset($this->request->post['xd_onclose_message'])) {
                 $xd_onclose_message = $this->request->post['xd_onclose_message'];
                 $mail_text .= $this->language->get('text_message') . $xd_onclose_message . " \r\n";
+            }
+
+            if (isset($this->request->post['xd_onclose_custom'])) {
+                $xd_onclose_custom = $this->request->post['xd_onclose_custom'];
+                $current_language_id = $this->config->get('config_language_id');
+                $xd_onclose_custom_title = $this->config->get('xd_onclose')['field_custom_title'][$current_language_id];
+                $mail_text .= $xd_onclose_custom_title . ': ' . $xd_onclose_custom . " \r\n";
             }
 
             $mail_text .= " \r\n";
@@ -356,6 +368,17 @@ class ControllerModuleXDOnclose extends Controller
             if (strlen($this->request->post['xd_onclose_message']) < 1 || strlen($this->request->post['xd_onclose_message']) > 9000) {
                 $this->error['message'] = $this->language->get('error_message');
                 $this->error['input'] = 'xd_onclose_message';
+                return false;
+            }
+        }
+
+        // Validate custom field
+        $this->field_custom_status = intval($xd_onclose_setting['field_custom_status']);
+        if ($this->field_custom_status === 2) {
+            if (strlen($this->request->post['xd_onclose_custom']) < 1 || strlen($this->request->post['xd_onclose_custom']) > 9000) {
+                $current_language_id = $this->config->get('config_language_id');
+                $this->error['message'] = sprintf($this->language->get('error_custom'), $xd_onclose_setting['field_custom_title'][$current_language_id]);
+                $this->error['input'] = 'xd_onclose_custom';
                 return false;
             }
         }
