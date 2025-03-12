@@ -359,6 +359,7 @@ class ControllerModuleXDOnclose extends Controller
         $this->log->write('captcha status: ' . $this->config->get($this->captcha . '_status'));
         if ($this->captcha && $this->config->get($this->config->get('config_captcha') . '_status')) {
             $captcha = $this->load->controller('captcha/' . $this->config->get('config_captcha') . '/validate');
+            $this->log->write('captcha validate: ' . $captcha);
             if ($captcha) {
                 $this->error['message'] = $this->language->get('error_captcha');
                 $this->error['input'] = 'xd_onclose_captcha';
