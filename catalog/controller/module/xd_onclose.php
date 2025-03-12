@@ -355,11 +355,8 @@ class ControllerModuleXDOnclose extends Controller
         // Captcha
         $data['captcha'] = (isset($xd_onclose_setting['captcha'])) ? $xd_onclose_setting['captcha'] : 0; // Captcha
         $this->captcha = $data['captcha'];
-        $this->log->write('captcha: ' . $this->captcha);
-        $this->log->write('captcha status: ' . $this->config->get($this->captcha . '_status'));
-        if ($this->captcha && $this->config->get($this->config->get('config_captcha') . '_status')) {
-            $captcha = $this->load->controller('captcha/' . $this->config->get('config_captcha') . '/validate');
-            $this->log->write('captcha validate: ' . $captcha);
+        if ($this->captcha && $this->config->get($this->captcha . '_status')) {
+            $captcha = $this->load->controller('captcha/' . $this->captcha . '/validate');
             if ($captcha) {
                 $this->error['message'] = $this->language->get('error_captcha');
                 $this->error['input'] = 'xd_onclose_captcha';
@@ -367,27 +364,6 @@ class ControllerModuleXDOnclose extends Controller
             }
         }
 
-
         return !$this->error;
-    }
-
-    public function validate_captcha()
-    {
-        $this->load->model('setting/setting');
-        $buyoneclick = $this->config->get('buyoneclick');
-        $buyoneclick_captcha = $buyoneclick['config_captcha'];
-        // var_dump($buyoneclick);
-        $json = array();
-        // Captcha
-        if (isset($buyoneclick_captcha) && $buyoneclick_captcha != '') {
-            $captcha = $this->load->controller('extension/captcha/' . $buyoneclick_captcha . '/validate');
-            if ($captcha) {
-                $json['error'] = $captcha;
-            } else {
-                $json['success'] = 'ok';
-            }
-        }
-        $this->response->addHeader('Content-Type: application/json');
-        $this->response->setOutput(json_encode($json));
     }
 }

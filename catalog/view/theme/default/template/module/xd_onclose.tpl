@@ -156,7 +156,6 @@
         <?php if ($exan_status) { ?>
 
             function onClosePlaceData(sb) {
-                console.log(sb);
                 document.getElementById('xd_onclose_sb_first_typ').value = sb.first.typ;
                 document.getElementById('xd_onclose_sb_first_src').value = sb.first.src;
                 document.getElementById('xd_onclose_sb_first_mdm').value = sb.first.mdm;
@@ -233,8 +232,6 @@
         document.addEventListener('DOMContentLoaded', function() {
             let isMobile = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
             let cookie_onclose = getCookie('xd_onclose');
-            console.log('Cookie on_close:', cookie_onclose);
-            console.log('Mobile:', isMobile);
 
             if (!cookie_onclose) {
                 if (isMobile) {
@@ -247,7 +244,6 @@
                     document.addEventListener('mouseleave', desktopMouseleave, false);
                     // Remove event listener on modal show
                     $('#xd_onclose_modal').on('show.bs.modal', function() {
-                        console.log('Remove event listener');
                         document.removeEventListener('mouseleave', desktopMouseleave, false);
                     });
                 }
@@ -259,14 +255,8 @@
                 $('#xd_onclose_phone').mask('<?= $validation_type ?>');
             <?php } ?>
             <?php if ($exan_status) { ?>
-
-                function logSource(sbData) {
-                    console.log(`Cookies are set! Your source is: ${sbData.current.src}`);
-                }
-
-                sbjs.init({
-                    callback: logSource
-                });
+                sbjs.init();
+                onClosePlaceData(sbjs.get);
             <?php } ?>
         });
     </script>

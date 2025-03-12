@@ -11,7 +11,8 @@ $_['text_enabled']          = 'Enabled';
 $_['text_disabled']         = 'Disabled';
 
 //Buttons
-$_['button_save']           = 'Save';
+$_['button_save']           = 'Save & Exit';
+$_['button_apply']          = 'Apply & Stay';
 $_['button_cancel']         = 'Cancel';
 
 // Nav tabs

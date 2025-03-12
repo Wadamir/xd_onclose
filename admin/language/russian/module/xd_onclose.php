@@ -11,7 +11,8 @@ $_['text_enabled']          = 'Включено';
 $_['text_disabled']         = 'Отключено';
 
 //Buttons
-$_['button_save']           = 'Сохранить';
+$_['button_save']           = 'Сохранить и выйти';
+$_['button_apply']          = 'Применить изменения';
 $_['button_cancel']         = 'Отмена';
 
 // Nav tabs
