@@ -241,10 +241,10 @@
                     }, <?= $mobile_seconds ?>);
                 } else {
                     // Show on mouse leave
-                    document.addEventListener('mouseleave', desktopMouseleave, false);
+                    document.body.addEventListener('mouseleave', desktopMouseleave, false);
                     // Remove event listener on modal show
                     $('#xd_onclose_modal').on('show.bs.modal', function() {
-                        document.removeEventListener('mouseleave', desktopMouseleave, false);
+                        document.body.removeEventListener('mouseleave', desktopMouseleave, false);
                     });
                 }
             }
