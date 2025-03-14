@@ -223,6 +223,7 @@
                 }
             }
             $('#xd_onclose_modal').modal('show');
+            oncloseClickAnalytics?.();
         }
 
         /* Cookie functions */
@@ -269,6 +270,49 @@
                 onClosePlaceData(sbjs.get);
             <?php } ?>
         });
+
+        /* Analytics */
+        function oncloseClickAnalytics() {
+            console.log('oncloseClickAnalytics');
+            <?php if ($ya_status && $ya_counter != '' && $ya_identifier != '') { ?>
+                yaCounter<?= $ya_counter ?>.reachGoal('<?= $ya_identifier ?>');
+            <?php } ?>
+            <?php if ($google_status && $google_category_btn != '' && $google_action_btn != '') { ?>
+                ga('send', 'event', '<?= $google_category_btn ?>', '<?= $google_action_btn ?>');
+                gtag('event', '<?= $google_action_btn ?>', {
+                    'event_category': '<?= $google_category_btn ?>'
+                });
+            <?php } ?>
+            return true;
+        }
+
+        function oncloseClickAnalyticsSend() {
+            console.log('oncloseClickAnalyticsSend');
+            <?php if ($ya_status && $ya_counter != '' && $ya_identifier_send != '') { ?>
+                yaCounter<?= $ya_counter ?>.reachGoal('<?= $ya_identifier_send ?>');
+            <?php } ?>
+            <?php if ($google_status && $google_category_send != '' && $google_action_send != '') { ?>
+                ga('send', 'event', '<?= $google_category_send ?>', '<?= $google_action_send ?>');
+                gtag('event', '<?= $google_action_send ?>', {
+                    'event_category': '<?= $google_category_send ?>'
+                });
+            <?php } ?>
+            return true;
+        }
+
+        function oncloseClickAnalyticsSuccess() {
+            console.log('oncloseClickAnalyticsSuccess');
+            <?php if ($ya_status && $ya_counter != '' && $ya_identifier_success != '') { ?>
+                yaCounter<?= $ya_counter ?>.reachGoal('<?= $ya_identifier_success ?>');
+            <?php } ?>
+            <?php if ($google_status && $google_category_success != '' && $google_action_success != '') { ?>
+                ga('send', 'event', '<?= $google_category_success ?>', '<?= $google_action_success ?>');
+                gtag('event', '<?= $google_action_success ?>', {
+                    'event_category': '<?= $google_category_success ?>'
+                });
+            <?php } ?>
+            return true;
+        }
     </script>
 <?php } ?>
 <!-- xd onclose module end -->

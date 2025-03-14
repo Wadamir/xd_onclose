@@ -50,7 +50,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     document.getElementById('xd_onclose-form').addEventListener('submit', function (event) {
         event.preventDefault();
-        // if (!onCloseFormValidation(this)) return false;
+
+        oncloseClickAnalyticsSend?.();
 
         let submitBtn = this.querySelector('button[type=submit]');
         let errorElem = document.getElementById('xd_onclose_error');
@@ -97,6 +98,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     errorElem.textContent = '';
                     errorElem.classList.add('hidden');
                     document.getElementById('xd_onclose-form').reset();
+                    oncloseClickAnalyticsSuccess?.();
                     submitBtn.disabled = false;
                     if (json.redirect) {
                         window.location.href = json.redirect;

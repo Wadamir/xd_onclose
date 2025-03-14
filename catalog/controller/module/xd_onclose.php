@@ -103,9 +103,23 @@ class ControllerModuleXDOnclose extends Controller
                 // Styles
                 $data['modal_style'] = (isset($xd_onclose_setting['modal_style'])) ? $xd_onclose_setting['modal_style'] : 'default';
 
-                // Analytics
+                // SourceBuster Analytics
                 $data['exan_status'] = (isset($xd_onclose_setting['exan_status'])) ? boolval($xd_onclose_setting['exan_status']) : false;
                 $this->exan_status = $data['exan_status'];
+                // Google Analytics
+                $data['google_status']              = (isset($xd_onclose_setting['google_status'])) ? boolval($xd_onclose_setting['google_status']) : false;
+                $data['google_category_btn']        = (isset($xd_onclose_setting['google_category_btn'])) ? trim($xd_onclose_setting['google_category_btn']) : '';
+                $data['google_action_btn']          = (isset($xd_onclose_setting['google_action_btn'])) ? trim($xd_onclose_setting['google_action_btn']) : '';
+                $data['google_category_send']       = (isset($xd_onclose_setting['google_category_send'])) ? trim($xd_onclose_setting['google_category_send']) : '';
+                $data['google_action_send']         = (isset($xd_onclose_setting['google_action_send'])) ? trim($xd_onclose_setting['google_action_send']) : '';
+                $data['google_category_success']    = (isset($xd_onclose_setting['google_category_success'])) ? trim($xd_onclose_setting['google_category_success']) : '';
+                $data['google_action_success']      = (isset($xd_onclose_setting['google_action_success'])) ? trim($xd_onclose_setting['google_action_success']) : '';
+                // Yandex Metrika
+                $data['ya_status']                  = (isset($xd_onclose_setting['ya_status'])) ? boolval($xd_onclose_setting['ya_status']) : false;
+                $data['ya_counter']                 = (isset($xd_onclose_setting['ya_counter'])) ? trim($xd_onclose_setting['ya_counter']) : '';
+                $data['ya_identifier']              = (isset($xd_onclose_setting['ya_identifier'])) ? trim($xd_onclose_setting['ya_identifier']) : '';
+                $data['ya_identifier_send']         = (isset($xd_onclose_setting['ya_identifier_send'])) ? trim($xd_onclose_setting['ya_identifier_send']) : '';
+                $data['ya_identifier_success']      = (isset($xd_onclose_setting['ya_identifier_success'])) ? trim($xd_onclose_setting['ya_identifier_success']) : '';
             }
         }
         return $this->load->view('default/template/module/xd_onclose.tpl', $data);
